@@ -8,20 +8,24 @@ project(bulklib VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
 find_package(Threads)
 
-add_executable(async observer.h observer.cpp main.cpp async.cpp async.h)
+set(LIBFILES async.h async.cpp observer.h observer.cpp)
 
-set_target_properties(async PROPERTIES
+add_library(async SHARED ${LIBFILES})
+add_executable(async_cli main.cpp)
+
+set_target_properties(async_cli PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
     COMPILE_OPTIONS "-Wall;-Wpedantic;-Wextra;" #-fsanitize=thread
 #    LINK_OPTIONS "-fsanitize=thread"
 )
 
-target_link_libraries(async
+target_link_libraries(async_cli
     ${CMAKE_THREAD_LIBS_INIT}
+    async
 )
 
-install(TARGETS async RUNTIME DESTINATION bin)
+install(TARGETS async_cli RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 
