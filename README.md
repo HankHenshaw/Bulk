@@ -1,3 +1,3 @@
 # Bulk
 
-Place text here
+Асинхронная обработка для [Observer](https://github.com/HankHenshaw/Observer)
