@@ -16,8 +16,7 @@ add_executable(async_cli main.cpp)
 set_target_properties(async_cli PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
-    COMPILE_OPTIONS "-Wall;-Wpedantic;-Wextra;" #-fsanitize=thread
-#    LINK_OPTIONS "-fsanitize=thread"
+    COMPILE_OPTIONS "-Wall;-Wpedantic;-Wextra;"
 )
 
 target_link_libraries(async_cli
